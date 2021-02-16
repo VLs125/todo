@@ -1,13 +1,11 @@
 import React from 'react'
+import TodoListItem from './todo-list-item'
 
 const TodoList = () =>{
-    const items = ['Learn React', 'Build Awesome App','Learn Java']
-    .map((element,index)=>{
-      return <li key={index}>{element}</li>
-    })
     return(
       <ul>
-      {items}
+      <TodoListItem/>
+      <TodoListItem/>
     </ul>
     )
   }
