@@ -6,7 +6,7 @@ const SearchPanel=()=>{
     const searchStyle = {
       fontSize:'20px'
     }
-      return   <input
+      return   <input className="form-control"
       style = {searchStyle} 
       placeholder={searchText}/>
   }
