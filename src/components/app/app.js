@@ -6,9 +6,9 @@ import TodoList from '../todo-list/todo-list'
 
 const App =()=>{
     const todoData = [
-      {label:'Lern React',important:false, id:1},
-      {label:'Learn Spring',important:true,id:2},
-      {label:'Do awesome',important:true, id:3}
+      {label:'First task',important:false, id:1},
+      {label:'Second task',important:true,id:2},
+      {label:'Third task',important:true, id:3}
     ]
     return( <div className="todo-app">
         <AppHeader todo={1} done={3}/>
