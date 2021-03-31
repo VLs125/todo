@@ -4,13 +4,13 @@ import './search-panel.css'
 const SearchPanel = (props) => {
   const [term, setTerm] = useState('');
 
-const {onSearchChange} = props
+  const { onSearchChange } = props
 
-const onChangeInput = (e) =>{
-  const value = e.target.value
-  setTerm(value);
-  onSearchChange(value);
-}
+  const onChangeInput = (e) => {
+    const value = e.target.value
+    setTerm(value);
+    onSearchChange(value);
+  }
 
   const searchText = 'Type here to search'
   const searchStyle = {
