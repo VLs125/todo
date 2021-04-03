@@ -6,7 +6,6 @@ import TodoList from "./todo-list";
 
 const TodoListContainer:React.FC = ()=>{
     const {todos, page, error, limit, loading,filter} = useTypedSelector(state => state.todos);
-    console.log(todos);
 
     const {fetchTodos, deleteTodo, setImportant, setCompleted} = useActions();
 
