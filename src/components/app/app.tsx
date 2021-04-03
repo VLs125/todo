@@ -11,7 +11,7 @@ import {useActions} from "../../ hooks/useActions";
  const App : React.FunctionComponent = () => {
   const  {todos ,page,error,limit,loading,term,filter } = useTypedSelector(state=>state.todos);
 
-  const { fetchTodos, setTodoPage,deleteTodo,setImportant } = useActions();
+  const { fetchTodos, setTodoPage,deleteTodo,setImportant,setCompleted } = useActions();
 
   useEffect(() => {
     fetchTodos(page, limit);
@@ -26,7 +26,8 @@ import {useActions} from "../../ hooks/useActions";
             error={error}
             todos={todos}
             onDeleted={deleteTodo}
-            setImportant={setImportant}/>
+            setImportant={setImportant}
+            setCompleted ={setCompleted}/>
       </div>
 
       //      <TodoList

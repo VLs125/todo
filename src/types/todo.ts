@@ -15,6 +15,7 @@ export enum TodoActionTypes {
     FETCH_TODOS_ERROR = 'FETCH_TODOS_ERROR',
     SET_TODO_PAGE='SET_TODO_PAGE',
     SET_FILTER = 'SET_FILTER',
+    SET_COMPLETED = 'SET_COMPLETED',
     SET_SEARCH_TERM = 'SET_SEARCH_TERM',
     SET_IMPORTANT='SET_IMPORTANT',
     TODO_DELETE_ITEM='TODO_DELETE_ITEM',
@@ -32,6 +33,11 @@ interface TodoSetImportant {
 interface TodoSetSearchTerm {
     type:TodoActionTypes.SET_SEARCH_TERM;
     payload:string,
+}
+interface TodoSetCompleted {
+    type:TodoActionTypes.SET_COMPLETED;
+    payload:number;
+
 }
 type Todos = {
     userId:number,
@@ -79,3 +85,4 @@ export type TodoAction =
     | TodoDeleteItem
     | TodoAddItem
     | TodoSetImportant
+    | TodoSetCompleted

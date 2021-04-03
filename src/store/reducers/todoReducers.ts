@@ -85,8 +85,19 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 ]
             }
 
+        case TodoActionTypes.SET_COMPLETED:
+            const completedIdx = findIdx(state,action.payload)
+            const compledTodos = state.todos[completedIdx]
+            const returnedCompletedItem = {...compledTodos,completed:!compledTodos.completed}
 
-
+            return {
+                ...state,
+                todos:[
+                    ...state.todos.slice(0, completedIdx),
+                    returnedCompletedItem,
+                    ...state.todos.slice(completedIdx + 1 )
+                ]
+            }
 
         default:
             return state

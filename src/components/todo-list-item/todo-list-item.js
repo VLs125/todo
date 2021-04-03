@@ -4,7 +4,7 @@ import './todo-list-item.css'
 
 const TodoListItem = (props) => {
 
-    const {title, onDeleted, onToggleDone, setImportant, important, completed, id} = props;
+    const {title, onDeleted, setCompleted, setImportant, important, completed, id} = props;
 
 
     let classNames = 'todo-list-item';
@@ -21,7 +21,7 @@ const TodoListItem = (props) => {
     return (
         <span className={classNames}>
             <span className="todo-list-item-label"
-                  onClick={onToggleDone}>
+                  onClick={()=>setCompleted(id)}>
                 {title}
             </span>
             <div className="btn-group">

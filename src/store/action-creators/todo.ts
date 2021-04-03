@@ -31,6 +31,9 @@ export function deleteTodo(id:number):TodoAction {
 export function setImportant(id:number):TodoAction {
     return {type:TodoActionTypes.SET_IMPORTANT,payload:id}
 }
+export function setCompleted(id:number):TodoAction {
+    return {type:TodoActionTypes.SET_COMPLETED,payload:id}
+}
 export function setTodoPage(page:number):TodoAction {
     return {type:TodoActionTypes.SET_TODO_PAGE,payload:page}
 }

@@ -9,8 +9,8 @@ const TodoList = (props) => {
 
 
     const elements = todos.map((item) => {
-    const {id,title,important} = item;
-    const {onDeleted,setImportant} = props;
+    const {id,title,important,completed} = item;
+    const {onDeleted,setImportant,setCompleted} = props;
 
     return (
         <li key ={id} className="list-group-item">
@@ -18,7 +18,9 @@ const TodoList = (props) => {
                         onDeleted={onDeleted}
                         id={id}
                         important={important}
-                        setImportant={setImportant}/>
+                        completed={completed}
+                        setImportant={setImportant}
+                        setCompleted={setCompleted}/>
         </li>
     )
   })
