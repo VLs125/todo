@@ -28,13 +28,20 @@ interface TodoSetSearchTerm {
     type:TodoActionTypes.SET_SEARCH_TERM;
     payload:string,
 }
+// type Todos = [{
+//     userId:number,
+//     id:number,
+//     title:string,
+//     completed:boolean,
+//     important?:boolean
+// }]
 
 interface FetchTodoAction {
     type:TodoActionTypes.FETCH_TODOS;
 }
 interface FetchTodoActionSucces {
     type:TodoActionTypes.FETCH_TODOS_SUCCES;
-    payload:any[]
+    payload:[]
 }
 interface FetchTodoActionError {
     type:TodoActionTypes.FETCH_TODOS_ERROR;

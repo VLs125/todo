@@ -24,6 +24,9 @@ export const fetchTodos= (page = 1,limit = 10)=>{
         }
     }
 }
+export function deleteTodo(id:number):TodoAction {
+    return {type:TodoActionTypes.TODO_DELETE_ITEM,payload:id}
+}
 
 export function setTodoPage(page:number):TodoAction {
     return {type:TodoActionTypes.SET_TODO_PAGE,payload:page}

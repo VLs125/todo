@@ -9,8 +9,10 @@ import {useTypedSelector} from "../../ hooks/useTypedSelector";
 import {useActions} from "../../ hooks/useActions";
 
  const App : React.FunctionComponent = () => {
-  const  {todos,page,error,limit,loading,term,filter } = useTypedSelector(state=>state.todos);
-  const { fetchTodos, setTodoPage } = useActions();
+  const  {todos ,page,error,limit,loading,term,filter } = useTypedSelector(state=>state.todos);
+
+  const { fetchTodos, setTodoPage,deleteTodo } = useActions();
+
   useEffect(() => {
     fetchTodos(page, limit);
   }, [page]);
@@ -21,10 +23,16 @@ import {useActions} from "../../ hooks/useActions";
 
         <TodoList
             loading={loading}
-            limit={limit}
             error={error}
-            todos={todos} />
+            todos={todos}
+            onDeleted={deleteTodo}/>
       </div>
+
+      //      <TodoList
+      //        onToggleDone={onToggleDone}
+      //        onToggleImportant={onToggleImportant}
+      //        onDeleted={deleteItem}
+      //        todos={visibleItems} />
   )
 }
 // @ts-ignore
@@ -37,7 +45,7 @@ export default App
  //      this.createTodoItem("third item")
  //    ],
  //    term: '',
- //    filter: 'active' //active,all,done
+ //    filter: 'active' //active,all,completed
  //  };
  //
  //  const createTodoItem= (label) => {
@@ -45,7 +53,7 @@ export default App
  //    return {
  //      label,
  //      important: false,
- //      done: false,
+ //      completed: false,
  //      id: this.maxId++
  //
  //    }
@@ -133,9 +141,9 @@ export default App
   //     case 'all':
   //       return items;
   //     case 'active':
-  //       return items.filter((item) => !item.done)
-  //     case 'done':
-  //       return items.filter((item) => item.done);
+  //       return items.filter((item) => !item.completed)
+  //     case 'completed':
+  //       return items.filter((item) => item.completed);
   //     default:
   //       return items;
   //
@@ -146,12 +154,12 @@ export default App
     // const { todoData, term, filter } = this.state
     // const visibleItems = this.filter(this.searchItem(todoData, term), filter)
     // const doneCount = todoData
-    //   .filter((el) => el.done).length;
+    //   .filter((el) => el.completed).length;
 
   //  const onToggleDone = (id) => {
   //    this.setState(({ todoData }) => {
   //      return {
-  //        todoData: this.toggleProperty(todoData, id, "done")
+  //        todoData: this.toggleProperty(todoData, id, "completed")
   //      }
   //    })
   //
@@ -167,7 +175,7 @@ export default App
  //  }
  //
  //    return (<div className="todo-app">
- //      <AppHeader todo={todoCount} done={doneCount} />
+ //      <AppHeader todo={todoCount} completed={doneCount} />
  //      <div className="top-panel d-flex">
  //        <SearchPanel onSearchChange={onSearchChange} />
  //        <ItemStatusFilter filter={filter}

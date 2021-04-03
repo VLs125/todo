@@ -46,13 +46,14 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 ]
             }
         case TodoActionTypes.TODO_DELETE_ITEM:
+            const item = state.todos.find(({id})=> id === action.payload)
+            const elementId = state.todos.indexOf(item)
             return {
                 ...state,
                 todos:[
-                    ...state.todos.slice(0,action.payload),
-                    ...state.todos.slice(action.payload,+1)
+                    ...state.todos.slice(0, elementId),
+                    ...state.todos.slice(elementId + 1 )
                 ]
-
             }
         case TodoActionTypes.SET_FILTER:
             return {
