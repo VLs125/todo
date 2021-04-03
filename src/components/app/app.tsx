@@ -1,45 +1,25 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import AddElementsForm from '../add-elements-form/add-elements-form'
 import AppHeader from '../app-header/app-header'
 import ItemStatusFilter from '../item-status-filter/item-status-filter'
 import SearchPanel from '../search-panel/search-panel'
-import TodoList from '../todo-list/todo-list'
 import './app.css'
-import {useTypedSelector} from "../../ hooks/useTypedSelector";
-import {useActions} from "../../ hooks/useActions";
+import TodoListContainer from "../todo-list/todo-list-container";
+import ItemStatusFilterContainer from "../item-status-filter/item-status-filter-container";
+
 
 const App: React.FunctionComponent = () => {
-    const {todos, page, error, limit, loading, term, filter} = useTypedSelector(state => state.todos);
-
-    const {fetchTodos, setTodoPage, deleteTodo, setImportant, setCompleted} = useActions();
-
-    useEffect(() => {
-        fetchTodos(page, limit);
-    }, [page]);
-
-    const maxId = todos.length - 1;
 
     return (<div className="todo-app">
             <AppHeader todo={2} complete={3}/>
             <div className="top-panel d-flex">
                 <SearchPanel onSearchChange={'onSearchChange'}/>
-
-                <ItemStatusFilter filter={filter}
-                                  onFilterChange={'onFilterChange'}/>
+                <ItemStatusFilterContainer/>
             </div>
-
-            <TodoList
-                loading={loading}
-                error={error}
-                todos={todos}
-                onDeleted={deleteTodo}
-                setImportant={setImportant}
-                setCompleted={setCompleted}/>
-            <AddElementsForm addItem={'addItem'} />
+            <TodoListContainer/>
+            <AddElementsForm addItem={'addItem'}/>
 
         </div>
-
-
 
 
     )

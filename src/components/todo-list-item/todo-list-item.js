@@ -3,19 +3,19 @@ import './todo-list-item.css'
 
 
 const TodoListItem = (props) => {
-
     const {title, onDeleted, setCompleted, setImportant, important, completed, id} = props;
 
 
     let classNames = 'todo-list-item';
     let buttonClasses = 'btn btn-outline-secondary btn-sm float-right'
+
     if (completed) {
         classNames += ' done'
     }
+
     if (important) {
         classNames += ' important'
         buttonClasses = 'btn btn-outline-success btn-sm float-right'
-
     }
 
     return (

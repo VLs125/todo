@@ -34,6 +34,9 @@ export function setImportant(id:number):TodoAction {
 export function setCompleted(id:number):TodoAction {
     return {type:TodoActionTypes.SET_COMPLETED,payload:id}
 }
+export function setFilter(filter:string):TodoAction {
+    return {type:TodoActionTypes.SET_FILTER,payload:filter}
+}
 export function setTodoPage(page:number):TodoAction {
     return {type:TodoActionTypes.SET_TODO_PAGE,payload:page}
 }
