@@ -7,15 +7,18 @@ const TodoList = (props) => {
 
 
 
-  const elements = todos.map((item) => {
-    const {id,title} = item;
-    const {onDeleted} = props;
+
+    const elements = todos.map((item) => {
+    const {id,title,important} = item;
+    const {onDeleted,setImportant} = props;
 
     return (
         <li key ={id} className="list-group-item">
           <TodoListItem title={title}
                         onDeleted={onDeleted}
-                        id={id}/>
+                        id={id}
+                        important={important}
+                        setImportant={setImportant}/>
         </li>
     )
   })

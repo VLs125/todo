@@ -1,7 +1,7 @@
 import {TodoAction, TodoActionTypes, TodoState} from "../../types/todo";
 
 const initialState : TodoState = {
-    todos:[],
+    todos:[] ,
     page:1,
     error:null,
     limit:10,
@@ -10,8 +10,14 @@ const initialState : TodoState = {
     filter: 'active', //active,all,done
 }
 
+const findIdx = (state:TodoState,payload:number): number =>{
+    const item = state.todos.find(({id})=> id === payload)
+    // @ts-ignore
+    return state.todos.indexOf(item)
+}
 
 export const todoReducer = (state:TodoState = initialState,action:TodoAction):TodoState=>{
+
     switch (action.type){
         case TodoActionTypes.FETCH_TODOS:
             return{
@@ -24,6 +30,7 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 loading:false,
                 todos:action.payload
             }
+
         case TodoActionTypes.FETCH_TODOS_ERROR:
             return{
                 ...state,
@@ -41,18 +48,16 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 ...state,
                 todos:[
                     ...state.todos,
-                    action.payload
-
                 ]
             }
         case TodoActionTypes.TODO_DELETE_ITEM:
-            const item = state.todos.find(({id})=> id === action.payload)
-            const elementId = state.todos.indexOf(item)
+            const deleteElIdx = findIdx(state,action.payload);
+
             return {
                 ...state,
                 todos:[
-                    ...state.todos.slice(0, elementId),
-                    ...state.todos.slice(elementId + 1 )
+                    ...state.todos.slice(0, deleteElIdx),
+                    ...state.todos.slice(deleteElIdx + 1 )
                 ]
             }
         case TodoActionTypes.SET_FILTER:
@@ -65,6 +70,22 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 ...state,
                 term:action.payload
             }
+
+        case TodoActionTypes.SET_IMPORTANT:
+            const importatedIdx = findIdx(state,action.payload)
+            const importadedTodos = state.todos[importatedIdx]
+            const returnedImportadedItem = {...importadedTodos,important:!importadedTodos.important}
+
+            return {
+                ...state,
+                todos:[
+                    ...state.todos.slice(0, importatedIdx),
+                    returnedImportadedItem,
+                    ...state.todos.slice(importatedIdx + 1 )
+                ]
+            }
+
+
 
 
         default:
