@@ -4,7 +4,7 @@ import './todo-list-item.css'
 
 const TodoListItem = (props) => {
 
-    const { title, onDeleted, onToggleDone, setImportant, important, completed,id } = props;
+    const {title, onDeleted, onToggleDone, setImportant, important, completed, id} = props;
 
 
     let classNames = 'todo-list-item';
@@ -21,33 +21,28 @@ const TodoListItem = (props) => {
     return (
         <span className={classNames}>
             <span className="todo-list-item-label"
-                onClick={onToggleDone}>
+                  onClick={onToggleDone}>
                 {title}
             </span>
             <div className="btn-group">
                 <button type="button"
-                    className={buttonClasses}
-                    onClick={()=>{
-                        console.log(id)
-                        setImportant(id)
-                    }
-                    }
+                        className={buttonClasses}
+                        onClick={() => {
+                            setImportant(id)
+                        }
+                        }>
 
-                >
-                    <i className="fa fa-exclamation" />
+                    <i className="fa fa-exclamation"/>
                 </button>
 
                 <button type="button"
-                    onClick={()=>{
-                        console.log(id);
-                        onDeleted(id)
-                    }}
-                    className="btn btn-outline-danger btn-sm float-right">
-                    <i className="fa fa-trash-o" />
+                        onClick={() => {
+                            onDeleted(id)
+                        }}
+                        className="btn btn-outline-danger btn-sm float-right">
+                    <i className="fa fa-trash-o"/>
                 </button>
             </div>
-
-
 
         </span>
     )
