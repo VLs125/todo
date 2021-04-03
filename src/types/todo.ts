@@ -9,7 +9,7 @@ export interface TodoState {
 
 }
 
-export enum TodoActionTypes{
+export enum TodoActionTypes {
     FETCH_TODOS = 'FETCH_TODOS',
     FETCH_TODOS_SUCCES='FETCH_TODOS_SUCCESS',
     FETCH_TODOS_ERROR = 'FETCH_TODOS_ERROR',

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import AddElementsForm from '../add-elements-form/add-elements-form'
 import AppHeader from '../app-header/app-header'
 import ItemStatusFilter from '../item-status-filter/item-status-filter'
@@ -6,10 +6,29 @@ import SearchPanel from '../search-panel/search-panel'
 import TodoList from '../todo-list/todo-list'
 import './app.css'
 import {useTypedSelector} from "../../ hooks/useTypedSelector";
+import {useActions} from "../../ hooks/useActions";
 
-const App = () => {
+ const App : React.FunctionComponent = () => {
   const  {todos,page,error,limit,loading,term,filter } = useTypedSelector(state=>state.todos);
-  const maxId = 100;
+  const { fetchTodos, setTodoPage } = useActions();
+  useEffect(() => {
+    fetchTodos(page, limit);
+  }, [page]);
+
+  const maxId = todos.length-1;
+
+  return (<div className="todo-app">
+
+        <TodoList
+            loading={loading}
+            limit={limit}
+            error={error}
+            todos={todos} />
+      </div>
+  )
+}
+// @ts-ignore
+export default App
 
  //  state = {
  //    todoData: [
@@ -91,14 +110,7 @@ const App = () => {
  //    })
  //
  //  }
- //  const onToggleDone = (id) => {
- //    this.setState(({ todoData }) => {
- //      return {
- //        todoData: this.toggleProperty(todoData, id, "done")
- //      }
- //    })
- //
- //  }
+
  //  const searchItem = (items, term) => {
  //    if (term === 0) {
  //      return items;
@@ -132,27 +144,41 @@ const App = () => {
 
 
     // const { todoData, term, filter } = this.state
-    const visibleItems = this.filter(this.searchItem(todoData, term), filter)
-    const doneCount = todoData
-      .filter((el) => el.done).length;
+    // const visibleItems = this.filter(this.searchItem(todoData, term), filter)
+    // const doneCount = todoData
+    //   .filter((el) => el.done).length;
 
-    const todoCount = todoData.length - doneCount
+  //  const onToggleDone = (id) => {
+  //    this.setState(({ todoData }) => {
+  //      return {
+  //        todoData: this.toggleProperty(todoData, id, "done")
+  //      }
+  //    })
+  //
+  //  }
 
-    return (<div className="todo-app">
-      <AppHeader todo={todoCount} done={doneCount} />
-      <div className="top-panel d-flex">
-        <SearchPanel onSearchChange={this.onSearchChange} />
-        <ItemStatusFilter filter={filter}
-          onFilterChange={this.onFilterChange} />
-      </div>
-      <TodoList
-        onToggleDone={this.onToggleDone}
-        onToggleImportant={this.onToggleImportant}
-        onDeleted={this.deleteItem}
-        todos={visibleItems} />
-      <AddElementsForm addItem={this.addItem} />
-    </div>
-    )
- }
-
- export default App
+ //    const todoCount = todoData.length - doneCount
+ //  if (loading) {
+ //    return <h1>Loading...</h1>
+ //  };
+ //
+ //  if (error) {
+ //    return <h1>Error...</h1>;
+ //  }
+ //
+ //    return (<div className="todo-app">
+ //      <AppHeader todo={todoCount} done={doneCount} />
+ //      <div className="top-panel d-flex">
+ //        <SearchPanel onSearchChange={onSearchChange} />
+ //        <ItemStatusFilter filter={filter}
+ //          onFilterChange={onFilterChange} />
+ //      </div>
+ //      <TodoList
+ //        onToggleDone={onToggleDone}
+ //        onToggleImportant={onToggleImportant}
+ //        onDeleted={deleteItem}
+ //        todos={visibleItems} />
+ //      <AddElementsForm addItem={addItem} />
+ //    </div>
+ //    )
+ // }

@@ -51,8 +51,6 @@ export const todoReducer = (state:TodoState = initialState,action:TodoAction):To
                 todos:[
                     ...state.todos.slice(0,action.payload),
                     ...state.todos.slice(action.payload,+1)
-
-
                 ]
 
             }

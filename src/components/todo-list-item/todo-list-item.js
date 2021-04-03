@@ -4,12 +4,12 @@ import './todo-list-item.css'
 
 const TodoListItem = (props) => {
 
-    const { label, onDeleted, onToggleDone, onToggleImportant, important, done } = props;
+    const { title, onDeleted, onToggleDone, onToggleImportant, important, completed } = props;
 
 
     let classNames = 'todo-list-item';
     let buttonClasses = 'btn btn-outline-secondary btn-sm float-right'
-    if (done) {
+    if (completed) {
         classNames += ' done'
     }
     if (important) {
@@ -22,7 +22,7 @@ const TodoListItem = (props) => {
         <span className={classNames}>
             <span className="todo-list-item-label"
                 onClick={onToggleDone}>
-                {label}
+                {title}
             </span>
             <div className="btn-group">
                 <button type="button"
