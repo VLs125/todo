@@ -6,12 +6,10 @@ import {useActions} from "../../ hooks/useActions";
 const ItemStatusFilterContainer: React.FC = () => {
     const {filter} = useTypedSelector(state => state.todos);
     const {setFilter} = useActions();
-    console.log(filter)
-
 
     return (
         <ItemStatusFilter filter={filter}
-                            onFilterChange={setFilter}/>
+                          onFilterChange={setFilter}/>
     )
 
 }

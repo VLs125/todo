@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
 import './search-panel.css'
 
-const SearchPanel = (props) => {
-  const [term, setTerm] = useState('');
+const SearchPanel = (props:any) => {
 
-  const { onSearchChange } = props
-
-  const onChangeInput = (e) => {
-    const value = e.target.value
-    setTerm(value);
-    onSearchChange(value);
-  }
+  const { onChangeInput,term } = props
 
   const searchText = 'Type here to search'
   const searchStyle = {

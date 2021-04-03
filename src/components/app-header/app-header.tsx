@@ -1,11 +1,13 @@
 import React from 'react';
 import './app-header.css';
 
-const AppHeader = ({todo,complete})=>{
+const AppHeader = (props: { todo: number; done: number; })=>{
+    const {todo,done} = props
+
     return(
       <div className="app-header d-flex">
         <h1>Simple ToDo</h1>
-        <h2>{todo} more to do and {complete} done</h2>
+        <h2>{todo} more to do and {done} done</h2>
       </div>
       
     )

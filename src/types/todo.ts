@@ -39,8 +39,8 @@ interface TodoSetCompleted {
     payload:number;
 
 }
-type Todos = {
-    userId:number,
+export type Todos = {
+    userId:number | null,
     id:number,
     title:string,
     completed:boolean,
@@ -71,7 +71,7 @@ interface TodoDeleteItem {
 
 interface TodoAddItem {
     type:TodoActionTypes.TODO_ADD_ITEM;
-    payload:any[];
+    payload:string;
 
 }
 

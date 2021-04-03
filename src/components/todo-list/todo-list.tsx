@@ -9,9 +9,8 @@ const TodoList = (props:any) => {
     const elements = todos.map((item:any) => {
 
     const {id,title,important,completed} = item;
-
     return (
-        <li key ={id} className="list-group-item">
+        <li key ={title} className="list-group-item">
           <TodoListItem title={title}
                         onDeleted={deleteTodo}
                         id={id}

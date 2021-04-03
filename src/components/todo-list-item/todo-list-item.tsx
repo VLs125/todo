@@ -2,7 +2,7 @@ import React from 'react';
 import './todo-list-item.css'
 
 
-const TodoListItem = (props) => {
+const TodoListItem = (props: { title: string; onDeleted: any; setCompleted: any; setImportant: any; important: boolean; completed: boolean; id: number; }) => {
     const {title, onDeleted, setCompleted, setImportant, important, completed, id} = props;
 
 
